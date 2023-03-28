@@ -99,33 +99,35 @@ export default function FormLogin() {
 	<>    
     <main>
         <div className="blur"></div>
-        <div className='login'>
-            <h1>Login for root</h1>
-            {/* <Image src='/logotipo.svg' width='100' height='100' alt='logotipo do mey blog'/> */}
+        <div className='ctr_login'>
+            <div className='login'>
+                <h1>Login for root</h1>
+                {/* <Image src='/logotipo.svg' width='100' height='100' alt='logotipo do mey blog'/> */}
 
-            <div className="ctr-modal close">
-                <div className="modal">
-                    <div className="ctr-notice">
+                <div className="ctr-modal close">
+                    <div className="modal">
+                        <div className="ctr-notice">
 
-                    <h3 className="notice">Aviso:</h3>
-                        <p></p>
-                    </div>
+                        <h3 className="notice">Aviso:</h3>
+                            <p></p>
+                        </div>
 
-                    <button className="close button-small" id="buttonModalClose" onClick={() => {closeModal()}}>Fechar</button>
-                </div>
-            </div>
-            <div className="blur none"></div>
-
-
-            <div className='form'>
-                <div className='ctr-inputs'>
-                    <div className='ctr-input' >
-                        <input type='password' id='senha' name='senha' value={form.senha} onChange={(e) => {f_handleInputs(e.target)}}/>
-                        <label htmlFor='senha'>Digite sua senha:</label>
+                        <button className="close button-small" id="buttonModalClose" onClick={() => {closeModal()}}>Fechar</button>
                     </div>
                 </div>
+                <div className="blur none"></div>
 
-                <button onClick={() => {f_sendData()}} className='btn-send'>Entrar</button>
+
+                <div className='form'>
+                    <div className='ctr-inputs'>
+                        <div className='ctr-input' >
+                            <input type='password' id='senha' name='senha' value={form.senha} onChange={(e) => {f_handleInputs(e.target)}}/>
+                            <label htmlFor='senha'>Digite sua senha:</label>
+                        </div>
+                    </div>
+
+                    <button onClick={() => {f_sendData()}} className='btn-send'>Entrar</button>
+                </div>
             </div>
         </div>
     </main>

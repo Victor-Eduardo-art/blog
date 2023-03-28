@@ -160,6 +160,8 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #000000;
+
+    caret-color: $cor-primaria-escura;
 }
 
 ::-webkit-scrollbar {
@@ -172,6 +174,11 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background-color: $cor-primaria-escura;
+}
+
+::selection {
+    background-color:  $cor-primaria-escura;
+    color: $cor-branca;
 }
 
 /* ====== HEADER ====== */
@@ -201,7 +208,7 @@ header.logoout {
 
 header.body {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     padding: 2.5rem;
     margin-bottom: 5rem;
@@ -252,76 +259,86 @@ main {
 
     }
 
-    .login {
-        z-index: 5;
+    .ctr_login {
         position: absolute;
-        margin-top: 20rem;
-        margin: 0 auto;
-        left: 25vw;
-        top: 30vh;
-        background-color: #00000080;
-        padding: 5rem 7rem;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center ;
 
-
-        h1 {
-            text-align: center;
-            margin-top: 0;
-        }
-
-        .form {
-            margin: 0;
-            width: 46.5rem;
-            margin: 5rem auto;
-            display: flex;
-            flex-direction: column;
-
-            .ctr-input {
-                margin: 2.5rem 0;
-                height: 3rem;
-                
-                input {
-                    width: 100%;
-                    background-color: $cor-preta-forte;
-                    border: 1px solid $cor-primaria-escura;
-                    border-radius: 1rem;
-                    padding: 1.3rem;
-                    color: $cor-branca;
-                }
+        .login {
+            z-index: 5;
+            margin-top: 20rem;
+            margin: 0 auto;
+            height: fit-content;
+            background-color: #00000080;
+            padding: 5rem 7rem;
     
-                label {
-                    font-size: 1.6rem;
-                    position: relative;
-                    left: 0.7rem;
-                    bottom: 3rem;
-                    background-color: $cor-preta-forte;
-                    transition: 0.3s all;    
-                    cursor: text;                
-
-                    &.click {
-                        bottom: 5rem;
-                        padding: 0 0.5rem;
-                        opacity: 90%;
+    
+            h1 {
+                text-align: center;
+            }
+    
+            .form {
+                margin: 0;
+                width: 46.5rem;
+                margin: 5rem auto;
+                display: flex;
+                flex-direction: column;
+    
+                .ctr-input {
+                    margin: 2.5rem 0;
+                    height: 3rem;
+                    
+                    input {
+                        width: 100%;
+                        background-color: $cor-preta-forte;
+                        border: 1px solid $cor-primaria-escura;
+                        border-radius: 1rem;
+                        padding: 1.3rem;
+                        color: $cor-branca;
+                    }
+        
+                    label {
+                        font-size: 1.6rem;
+                        position: relative;
+                        left: 0.7rem;
+                        bottom: 3rem;
+                        background-color: $cor-preta-forte;
+                        transition: 0.3s all;    
+                        cursor: text;                
+    
+                        &.click {
+                            bottom: 5rem;
+                            padding: 0 0.5rem;
+                            opacity: 90%;
+                        }
+                    }
+                }
+        
+                button {
+                    width: 100%;
+                    background-color: $cor-primaria-escura;
+                    color: $cor-branca;
+                    padding: 0.5rem;
+                    border-radius: 1rem;
+                    margin-top: 2.5rem;
+                    transition: 0.5s all;
+    
+                    &:hover {
+                        cursor: pointer;
+                        opacity: 80%;
                     }
                 }
             }
     
-            button {
-                width: 100%;
-                background-color: $cor-primaria-escura;
-                color: $cor-branca;
-                padding: 0.5rem;
-                border-radius: 1rem;
-                margin-top: 2.5rem;
-                transition: 0.5s all;
-
-                &:hover {
-                    cursor: pointer;
-                    opacity: 80%;
-                }
-            }
         }
-
     }
+
 
     .posts {
         display: flex;
@@ -365,10 +382,52 @@ main {
         display: flex;
         flex-direction: column;
 
+        .editor {
+            background-color: $cor-preta-claro;
+            position: absolute;
+            opacity: 100%;
+            top: 0;
+            left: 0;
+            width: fit-content;
+            height: fit-content;
+            padding: 0.5rem 1rem;
+            transition: 0.5s all;
+            // display: flex;
+            
+            .editor_btns {
+                width: 2rem;
+                height: 2rem;
+                cursor: pointer;
+                transition: 0.5s all;
+                background-color: $cor-preta-escuro;
+                margin: 0 1rem;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #11100000;
+                }
+
+                &:hover {
+                    opacity: 70%;
+                }
+            }
+
+            &.closed {
+                height: 0;
+                opacity: 0;
+                background-color: #6F3DD1 !important;
+
+                button {
+                    display: none;
+                }
+            }
+        }
+
 
         input {
             border: none;
-            background-color: #26262670;
+            background-color: #16161670;
             width: 100%;
             padding: 1rem;
             font-family: 'Quicksand', sans-serif;
@@ -380,22 +439,44 @@ main {
             &::placeholder {
                 color: #777;
             }
+
         }
 
-        textarea {
+        .content_post {
+            cursor: text;
             color: $cor-branca;
-            border: none;
-            background-color: #26262670;
+            border: none !important;
+            outline: none !important;
+            background-color: #16161670;
             width: 100%;
             min-height: 50vh;
-            padding: 1rem;
-            font-family: 'Noto Serif Bengali', serif;
-            font-weight: 400;
-            font-size: 2.2rem;
+            padding: 1rem;  
             margin-bottom: 2rem;
 
-            &::placeholder {
-                color: #777;
+            &:empty::before {
+                transition: 1s all;
+                opacity: 0%;
+                content: attr(data-placeholder);
+                color: $cor-branca;
+            }
+            
+            &:empty:not(:focus):before {
+                opacity: 100%;
+            }
+
+            span, & {
+                font-family: 'Noto Serif Bengali', serif;
+                font-weight: 400;
+                font-size: 1.7rem;
+            }
+
+            .negrito {
+                // font-weight: 500;
+                color: $cor-primaria-escura;
+            }
+
+            .italico {
+                font-weight: bold;
             }
         }
     }
