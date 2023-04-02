@@ -224,6 +224,19 @@ header.body {
 main {
     padding: 0 2.5rem;
 
+    .negrito, .italico {
+        color: inherit;
+        font-weight: inherit !important;
+    }
+
+    .negrito {
+        color: $cor-primaria-escura;
+    }
+
+    .italico {
+        font-weight: bold !important;
+    }
+
     .notFound {
         display: flex;
         flex-direction: column;
@@ -370,9 +383,51 @@ main {
                 }
             }
 
-            p {
+            // p {
+            //     margin: 1rem 0;
+            // }
+
+            .ctr_content {
+                display: flex;
+                width: fit-content;
+                align-items: center;
+                justify-content: left;
                 margin: 1rem 0;
+
+                p{
+                    margin: 0;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    width: 100%;
+                    animation: type 4s steps(60, end); 
+                  }
+                  
+                  p:nth-child(2){
+                    animation: type2 8s steps(60, end);
+                  }
+                  
+                  span{
+                    margin: 0;
+                    color: $cor-primaria-clara;
+                    animation: blink 1s infinite;
+                  }
+                  
+                  @keyframes type{ 
+                    from { width: 0; } 
+                  } 
+                  
+                  @keyframes type2{
+                    0%{width: 0;}
+                    50%{width: 0;}
+                    100%{ width: 100; } 
+                  } 
+                  
+                  @keyframes blink{
+                    to{opacity: .0;}
+                  }
             }
+
+              
         }
     }
 
@@ -453,6 +508,10 @@ main {
             padding: 1rem;  
             margin-bottom: 2rem;
 
+            .text {
+                display: inline;
+            }
+
             &:empty::before {
                 transition: 1s all;
                 opacity: 0%;
@@ -468,15 +527,16 @@ main {
                 font-family: 'Noto Serif Bengali', serif;
                 font-weight: 400;
                 font-size: 1.7rem;
+                margin: 0 !important;
             }
 
-            .negrito {
-                // font-weight: 500;
-                color: $cor-primaria-escura;
-            }
+            span.hide {
+                color: #16161670;
 
-            .italico {
-                font-weight: bold;
+                &::selection {
+                    color: $cor-primaria-escura;
+                    background-color: #6e3dd1;
+                }
             }
         }
     }
